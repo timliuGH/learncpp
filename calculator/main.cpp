@@ -1,4 +1,7 @@
 #include <iostream>
+#include <limits>
+
+typedef std::numeric_limits<std::streamsize> limit_t;
 
 double getDouble();
 char getOperator();
@@ -17,9 +20,20 @@ int main()
 
 double getDouble()
 {
+    // Get double from user
     std::cout << "Enter a double value: ";
     double userInput{};
     std::cin >> userInput;
+
+    // Check if extraction failed
+    while (std::cin.fail())
+    {
+        std::cout << "Invalid input. Try again: ";
+        std::cin.clear();                       // Clear error flag
+        std::cin.ignore(limit_t::max(), '\n');  // Clear buffer
+        std::cin >> userInput;                  // Get new double from user
+    }
+    std::cin.ignore(limit_t::max(), '\n');      // Clear buffer
     return userInput;
 }
 

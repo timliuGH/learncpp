@@ -1,16 +1,16 @@
 #include <iostream>
 
 double getDouble();
-char getOperation();
+char getOperator();
 void outputResult(double, double, char);
 
 int main()
 {
-    double dbl1 = getDouble();
-    double dbl2 = getDouble();
-    char operation = getOperation();
+    double dbl1 { getDouble() };
+    double dbl2 { getDouble() };
+    char op { getOperator() };
 
-    outputResult(dbl1, dbl2, operation);
+    outputResult(dbl1, dbl2, op);
 
     return 0;
 }
@@ -23,7 +23,7 @@ double getDouble()
     return userInput;
 }
 
-char getOperation()
+char getOperator()
 {
     std::cout << "Enter one of the following: +, -, *, or /: ";
     char userInput;

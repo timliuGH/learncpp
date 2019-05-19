@@ -18,7 +18,7 @@ int main()
 double getDouble()
 {
     std::cout << "Enter a double value: ";
-    double userInput;
+    double userInput{};
     std::cin >> userInput;
     return userInput;
 }
@@ -26,7 +26,7 @@ double getDouble()
 char getOperator()
 {
     std::cout << "Enter one of the following: +, -, *, or /: ";
-    char userInput;
+    char userInput{};
     std::cin >> userInput;
     return userInput;
 }

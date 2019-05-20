@@ -10,8 +10,8 @@ void outputResult(double, double, char);
 int main()
 {
     double dbl1 { getDouble() };
-    double dbl2 { getDouble() };
     char op { getOperator() };
+    double dbl2 { getDouble() };
 
     outputResult(dbl1, dbl2, op);
 
@@ -40,9 +40,18 @@ double getDouble()
 char getOperator()
 {
     std::cout << "Enter one of the following: +, -, *, or /: ";
-    char userInput{};
-    std::cin >> userInput;
-    return userInput;
+    char op{};
+    std::cin >> op;
+
+    // Check for valid input
+    while (op != '+' && op != '-' && op != '*' && op != '/')
+    {
+        std::cout << "Invalid operator. Try again: ";
+        std::cin.ignore(limit_t::max(), '\n');
+        std::cin >> op;
+    }
+    std::cin.ignore(limit_t::max(), '\n');
+    return op;
 }
 
 void outputResult(double d1, double d2, char c)
